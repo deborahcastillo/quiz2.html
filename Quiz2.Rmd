@@ -1,0 +1,33 @@
+---
+title: "Quiz2"
+author: "Deborah Castillo"
+date: "28/10/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Creating a map
+
+```{r map}
+my_map <- leaflet() %>%
+      addTiles() %>%
+      addMarkers(lat = 14.64072, lng = -90.51327, popup = "somewhere near my house")
+my_map
+```
+
+## Adding my University logo
+
+```{r custom marker}
+UFMicon <- makeIcon(iconUrl = "http://www.best-masters.com/assets/img/logo_ecole/470.jpg",
+                    iconWidth = 31*215/230, iconHeight = 31, 
+                    iconAnchorX = 31*215/230/2, iconAnchorY = 16)
+dir <- data.frame(lat = 14.64072, lon = -90.51327)
+dir %>% 
+      leaflet() %>%
+      addTiles() %>%
+      addMarkers(icon = UFMicon)
+```
+
